@@ -1,0 +1,27 @@
+.actions-icon {
+    color: #646c9a !important;
+    font-size: 18px !important;
+}
+.success-action {
+    color: #0abb87 !important;
+}
+.danger-action {
+    color: #fd397a !important;
+}
+.kt-portlet .kt-portlet__body{
+    flex-direction: row;
+}
+.dataTables_wrapper {
+    width: 100%;
+}
+.kt-portlet__body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.kt-portlet__body .form-group {
+    flex: 100%;
+}
+.form-group_1 {
+    flex: 25%;
+}

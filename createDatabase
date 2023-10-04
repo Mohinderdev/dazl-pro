@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+$servername = "dazl-mysql-testing";
+$username = "root";
+$password = "password";
+$databaseName = "dazl_testing";
+$conn = new mysqli($servername, $username, $password);
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+$dbExists = $conn->query("SHOW DATABASES LIKE '$databaseName'")->num_rows;
+if(!$dbExists){
+    $sql = "CREATE DATABASE $databaseName CHARSET UTF8";
+    $conn->query($sql);
+}
+shell_exec('php artisan migrate:fresh --env=testing');
+echo "database was created and tables were added .";
+
+$conn->close();

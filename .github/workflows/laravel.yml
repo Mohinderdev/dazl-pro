@@ -1,0 +1,29 @@
+name: Laravel-api
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-dazl:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: Copy env file
+        run: cp .env.example .env
+      - name: Install deps
+        run: composer install 
+      - name: Generate JWT Secret
+        run: php artisan jwt:secret --force
+      - name: Generate App Key
+        run: php artisan key:generate --force
+      - name: Run New Migrations
+        run: php artisan migrate
+      - name: Run Worker
+        run: nohup php artisan queue:work --daemon &
+#      - name: Run Tests
+#        run: docker exec dazl-backend ./scripts/runTests
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+      - name: Folder permissions
+        run: sudo chmod -R 777 /home/dazlpro/laravel-backend/actions-runner/_work/Dazl-Pro-App/Dazl-Pro-App/

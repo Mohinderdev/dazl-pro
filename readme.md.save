@@ -1,0 +1,16 @@
+# php artisan migrate
+
+# php artisan passport:install
+
+# php artisan db:seed
+
+# If your enviroment is Valet/Docker/Homestead
+    - Visit project_subdomain.test/admin/login
+    - email: admin@admin.com
+    - password: secret
+
+# Module generator
+    - php artisan add:module ModuleName
+    - edit migration file & seeder and model for new module and views
+    - php artisan migrate
+
